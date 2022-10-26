@@ -26,7 +26,10 @@ function LandingPage() {
         <button className='search-button'
           onClick={e => onSearch(query)}>Search</button>
       </div>
-      <List data={search(StockItem)} />
+      <div className='dropbox'>
+        <List data={search(StockItem)} />
+      </div>
+
     </div>
   )
 }

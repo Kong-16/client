@@ -8,7 +8,11 @@ function ChartPage() {
   // const baselineSeries = chart.addBaselineSeries();
   
   return (
-    <div>ChartPage</div>
+    <div>
+      <div className='chart'></div>
+
+    </div>
+
   )
 }
 
