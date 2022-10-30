@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './LandingPage.css'
-import { StockItem } from '../../../Stocks'
+import StockItem from '../Data/Stocks.json'
 import { List } from './List';
 import { useNavigate } from 'react-router-dom';
 
@@ -17,6 +17,7 @@ function LandingPage() {
     navigate("/chart")
     //ChartPage 로 이동, 결과없을 때 예외 처리 
   }
+  console.log(StockItem)
   return (
     <div>
       <div className='search'>
@@ -28,6 +29,7 @@ function LandingPage() {
       </div>
       <div className='dropbox'>
         <List data={search(StockItem)} />
+        StockItem
       </div>
 
     </div>
