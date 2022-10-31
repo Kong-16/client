@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './LandingPage.css'
-import StockItem from '../Data/Stocks.json'
+import './LandingPage.css';
+import StockItem from '../Data/Stocks.json';
 import { List } from './List';
 import { useNavigate } from 'react-router-dom';
 
@@ -29,7 +29,7 @@ function LandingPage() {
       </div>
       <div className='dropbox'>
         <List data={search(StockItem)} />
-        StockItem
+        <List data={StockItem} />
       </div>
 
     </div>
