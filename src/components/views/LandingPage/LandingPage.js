@@ -29,9 +29,7 @@ function LandingPage() {
       </div>
       <div className='dropbox'>
         <List data={search(StockItem)} />
-        <List data={StockItem} />
       </div>
-
     </div>
   )
 }
