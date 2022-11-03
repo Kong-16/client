@@ -19,7 +19,7 @@ function DrawChart() {
         return tmp
     }
 
-
+    preConvertData = JSON.parse(preConvertData)
     var convertedData = Object.entries(preConvertData).map(([key, value]) =>
         Object.assign({}, { "time": key }, lowerCaseInnerKey(value))
     )
