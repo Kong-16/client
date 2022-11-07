@@ -14,15 +14,15 @@ function DrawChart() {
     function lowerCaseInnerKey(innerobj) {
         var tmp = {}
         Object.entries(innerobj).slice(0).reverse().map(([key, value]) => {
-            if (value == '0') value = tmp['close']
+            if (value === 0) value = tmp['close']
             tmp[key.toLowerCase()] = value
-            return;
+            return 0;
         }
         )
         return tmp
     }
 
-    preConvertData = JSON.parse(preConvertData)
+    if (typeof preConvertData === 'string') preConvertData = JSON.parse(preConvertData)
     var convertedData = Object.entries(preConvertData).map(([key, value]) =>
         Object.assign({}, { "time": key }, lowerCaseInnerKey(value))
     )
@@ -30,8 +30,8 @@ function DrawChart() {
 
     useEffect(() => {
         chart.current = createChart(chartContainerRef.current, {
-            width: 1000,
-            height: 400,
+            width: chartContainerRef.current.clientWidth,
+            height: chartContainerRef.current.clientHeight,
             layout: {
                 backgroundColor: '#253248',
                 textColor: 'rgba(255,255,0.9)',
@@ -63,7 +63,7 @@ function DrawChart() {
 
         console.log(convertedData)
         candleSeries.setData(convertedData)
-    }, []);
+    }, [convertedData]);
 
     return (
         <div ref={chartContainerRef} style={styleInfo} />
