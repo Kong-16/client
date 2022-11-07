@@ -13,13 +13,16 @@ function DrawChart() {
 
     function lowerCaseInnerKey(innerobj) {
         var tmp = {}
-        Object.entries(innerobj).map(([key, value]) =>
+        Object.entries(innerobj).slice(0).reverse().map(([key, value]) => {
+            if (value == '0') value = tmp['close']
             tmp[key.toLowerCase()] = value
+            return;
+        }
         )
         return tmp
     }
 
-
+    preConvertData = JSON.parse(preConvertData)
     var convertedData = Object.entries(preConvertData).map(([key, value]) =>
         Object.assign({}, { "time": key }, lowerCaseInnerKey(value))
     )

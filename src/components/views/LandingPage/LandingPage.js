@@ -3,15 +3,15 @@ import './LandingPage.css';
 import StockItem from '../Data/Stocks.json';
 import { List } from './List';
 import { useNavigate } from 'react-router-dom';
-
+import Grid from '@mui/material/Grid';
+import { styled } from '@mui/material/styles';
+import { Paper } from '@mui/material';
+import { Box } from '@mui/system';
+import SearchBar from '../SearchBar/SearchBar.js';
 
 function LandingPage() {
   const [query, setQuery] = useState("");
-  const keys = ["name", "code"]; // 필요?
   const navigate = useNavigate()
-  const search = (data) => {
-    return data.filter((item) => keys.some((key) => item[key].startsWith(query)));
-  };
   const onSearch = (data) => {
     console.log("success");
     navigate("/chart")
@@ -19,18 +19,34 @@ function LandingPage() {
   }
   console.log(StockItem)
   return (
-    <div>
-      <div className='search'>
-        <input type='text' placeholder=' Search...' className='search-box'
-          onChange={e => setQuery(e.target.value)}
-        />
-        <button className='search-button'
-          onClick={e => onSearch(query)}>Search</button>
-      </div>
-      <div className='dropbox'>
-        <List data={search(StockItem)} />
-      </div>
-    </div>
+    // <div>
+    //   <div className='search'>
+    //     <input type='text' placeholder=' Search...' className='search-box'
+    //       onChange={e => setQuery(e.target.value)}
+    //     />
+    //     <button className='search-button'
+    //       onClick={e => onSearch(query)}>Search</button>
+    //   </div>
+    //   <div className='dropbox'>
+    //     <List data={search(StockItem)} />
+    //   </div>
+    // </div>
+    <Box
+      display='flex'
+      flexDirection='column'
+      justifyContent='center'
+      alignItems="center"
+      minHeight="70vh"
+    >
+      <Grid item
+        margin='10vh'
+        className='logo'>
+        <Paper> Clover Logo</Paper>
+      </Grid>
+      <Grid item className='SearchBar'>
+        <SearchBar />
+      </Grid>
+    </Box >
   )
 }
 
