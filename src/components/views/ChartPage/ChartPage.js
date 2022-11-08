@@ -7,8 +7,8 @@ import './ChartPage.css'
 
 function ChartPage() {
   return (
-    <Box>
-      <Paper sx={{ width: 500 }}>
+    <Box sx={{ padding: 10 }}>
+      <Paper sx={{ padding: 3, width: 1 / 2, height: 400 }}>
         <DrawChart className='chart_container' />
       </Paper>
     </Box>

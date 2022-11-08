@@ -30,7 +30,7 @@ function SearchBar() {
             getOptionLabel={(option) => option.name + '  ' + option.code}
             filterOptions={filteroption}
             noOptionsText={'찾으려는 주식이 없습니다...'}
-            sx={{ minWidth: 300 }}
+            sx={{ minWidth: 500 }}
             renderInput={(params) => <TextField
                 {...params}
                 label="Search" />}

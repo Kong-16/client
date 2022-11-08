@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import preConvertData from '../Data/Price.json';
 import { createChart, CrosshairMode } from 'lightweight-charts';
+import { Paper } from '@mui/material';
 
 const styleInfo = {
-    paddingLeft: '50px',
-    paddingTop: '100px'
+    paddingLeft: '10px',
+    paddingTop: '10px'
 }
 
 function DrawChart() {
@@ -30,8 +31,6 @@ function DrawChart() {
 
     useEffect(() => {
         chart.current = createChart(chartContainerRef.current, {
-            width: chartContainerRef.current.clientWidth,
-            height: chartContainerRef.current.clientHeight,
             layout: {
                 backgroundColor: '#253248',
                 textColor: 'rgba(255,255,0.9)',
@@ -66,7 +65,8 @@ function DrawChart() {
     }, [convertedData]);
 
     return (
-        <div ref={chartContainerRef} style={styleInfo} />
+        <Paper ref={chartContainerRef}
+            sx={{ padding: 0, width: 1, height: 1 }} />
     )
 }
 
