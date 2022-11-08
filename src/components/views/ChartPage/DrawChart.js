@@ -3,14 +3,10 @@ import preConvertData from '../Data/Price.json';
 import { createChart, CrosshairMode } from 'lightweight-charts';
 import { Paper } from '@mui/material';
 
-const styleInfo = {
-    paddingLeft: '10px',
-    paddingTop: '10px'
-}
-
 function DrawChart() {
     const chartContainerRef = useRef();
     const chart = useRef();
+    const resizeObserver = useRef();
 
     function lowerCaseInnerKey(innerobj) {
         var tmp = {}
@@ -32,8 +28,8 @@ function DrawChart() {
     useEffect(() => {
         chart.current = createChart(chartContainerRef.current, {
             layout: {
-                backgroundColor: '#253248',
-                textColor: 'rgba(255,255,0.9)',
+                backgroundColor: '#283237',
+                textColor: '#cae797', //#f7cd7a  cae797
             },
             grid: {
                 vertLines: {
@@ -41,7 +37,7 @@ function DrawChart() {
                 }
             },
             crosshair: {
-                mode: CrosshairMode.Normal
+                mode: CrosshairMode.Normal,
             },
             priceScale: {
                 borderColor: "#485c7b"
@@ -52,18 +48,28 @@ function DrawChart() {
         });
 
         const candleSeries = chart.current.addCandlestickSeries({
-            upColor: "#4bffb5",
-            downColor: "#ff4976",
-            borderDownColor: "#ff4976",
-            borderUpColor: "#4bffb5",
-            wickDownColor: "#838ca1",
-            wickUpColor: "#838ca1"
+            upColor: "#ec6a5e", // rgba 형식으로 쓰면 느림... 왜느린지는 모름
+            downColor: "#4a9df8",
+            borderDownColor: "#4a9df8",
+            borderUpColor: "#ec6a5e",
+            wickDownColor: "#4a9df8",
+            wickUpColor: "#ec6a5e"
         });
 
         console.log(convertedData)
         candleSeries.setData(convertedData)
     }, [convertedData]);
-
+    useEffect(() => {
+        resizeObserver.current = new ResizeObserver(entries => {
+            const { width, height } = entries[0].contentRect;
+            chart.current.applyOptions({ width, height });
+            setTimeout(() => {
+                chart.current.timeScale().fitContent();
+            }, 0)
+        });
+        resizeObserver.current.observe(chartContainerRef.current);
+        return () => resizeObserver.current.disconnect();
+    }, []);
     return (
         <Paper ref={chartContainerRef}
             sx={{ padding: 0, width: 1, height: 1 }} />

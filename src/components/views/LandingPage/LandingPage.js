@@ -8,6 +8,7 @@ import { styled } from '@mui/material/styles';
 import { Paper } from '@mui/material';
 import { Box } from '@mui/system';
 import SearchBar from '../SearchBar/SearchBar.js';
+import CloverLogo from './Clover_logo.png';
 
 function LandingPage() {
   const [query, setQuery] = useState("");
@@ -41,9 +42,11 @@ function LandingPage() {
       <Grid item
         margin='10vh'
         className='logo'>
-        <Paper> Clover Logo</Paper>
+        <img src={CloverLogo} />
       </Grid>
-      <Grid item className='SearchBar'>
+      <Grid
+        sx={{ width: 1 / 2 }}
+        item className='SearchBar'>
         <SearchBar />
       </Grid>
     </Box >
