@@ -1,8 +1,4 @@
 import React, { useState } from 'react';
-import './LandingPage.css';
-import StockItem from '../Data/Stocks.json';
-import { List } from './List';
-import { useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
 import { Paper } from '@mui/material';
@@ -10,15 +6,9 @@ import { Box } from '@mui/system';
 import SearchBar from '../SearchBar/SearchBar.js';
 import CloverLogo from './Clover_logo.png';
 
+import './LandingPage.css';
+
 function LandingPage() {
-  const [query, setQuery] = useState("");
-  const navigate = useNavigate()
-  const onSearch = (data) => {
-    console.log("success");
-    navigate("/chart")
-    //ChartPage 로 이동, 결과없을 때 예외 처리 
-  }
-  console.log(StockItem)
   return (
     // <div>
     //   <div className='search'>
@@ -32,24 +22,24 @@ function LandingPage() {
     //     <List data={search(StockItem)} />
     //   </div>
     // </div>
-    <Box
+    <Grid
       display='flex'
       flexDirection='column'
       justifyContent='center'
       alignItems="center"
       minHeight="70vh"
     >
-      <Grid item
+      <Box
         margin='10vh'
         className='logo'>
         <img src={CloverLogo} />
-      </Grid>
-      <Grid
+      </Box>
+      <Box
         sx={{ width: 1 / 2 }}
-        item className='SearchBar'>
+        className='SearchBar'>
         <SearchBar />
-      </Grid>
-    </Box >
+      </Box>
+    </Grid >
   )
 }
 

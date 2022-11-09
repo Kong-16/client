@@ -37,7 +37,7 @@ function DrawChart() {
                 }
             },
             crosshair: {
-                mode: CrosshairMode.Normal,
+                mode: CrosshairMode.Normal, // Magnet으로 할 시 끌려옴
             },
             priceScale: {
                 borderColor: "#485c7b"
@@ -55,8 +55,6 @@ function DrawChart() {
             wickDownColor: "#4a9df8",
             wickUpColor: "#ec6a5e"
         });
-
-        console.log(convertedData)
         candleSeries.setData(convertedData)
     }, [convertedData]);
     useEffect(() => {

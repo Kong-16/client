@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom'
 function SearchBar() {
     const keys = ['code', 'name']
     const [query, setQuery] = useState('');
+    const [obj, setObj] = useState(StockItem[0]);
     const filteroption = (options, { inputValue }) => {
         return options.filter((item) => keys.some((key) => item[key].startsWith(inputValue)))
     }
@@ -18,13 +19,13 @@ function SearchBar() {
             id="search_bar"
             autoComplete
             includeInputInList
-            // onChange={(event, selectedValue) => setQuery(selectedValue)}
+            onChange={(event, obj) => setObj(obj)}
             popupIcon={""}
-            inputValue={query}
             onInputChange={(event, inputValue) => setQuery(inputValue)}
             onKeyDown={(event) => {
                 if (event.key === 'Enter') {
-                    navigate("/chart")
+                    console.log(obj)
+                    navigate("/chart", { state: obj })
                 }
             }}
             options={StockItem}
@@ -39,4 +40,4 @@ function SearchBar() {
     )
 }
 
-export default SearchBar  
+export default SearchBar
