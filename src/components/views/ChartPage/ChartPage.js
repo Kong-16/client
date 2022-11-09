@@ -28,16 +28,25 @@ function ChartPage() {
               elevation={0}
               sx={{
                 typography: {
-                  font: '-apple-system'
+                  fontWeight: 550,
+                  fontSize: 30,
+                  color: 'green',
                 }
-              }}>
+              }}
+            >
               {Name}
             </Paper>
           </Grid>
           <Grid item xs={4}>
             <Paper
               elevation={0}
-              sx={{}}>
+              sx={{
+                typography: {
+                  fontSize: 20,
+                  fontWeight: 450,
+                  color: '#00000ff'
+                }
+              }}>
               {Code}
             </Paper>
           </Grid>
