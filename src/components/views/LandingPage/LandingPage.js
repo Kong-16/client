@@ -4,7 +4,7 @@ import { styled } from '@mui/material/styles';
 import { Paper } from '@mui/material';
 import { Box } from '@mui/system';
 import SearchBar from '../SearchBar/SearchBar.js';
-import CloverLogo from './Clover_logo.png';
+import CloverLogo from '../../../styles/Img/Clover_logo.png';
 
 import './LandingPage.css';
 
