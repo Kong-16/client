@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import { DrawChart } from './DrawChart';
 import { Box } from '@mui/system';
-import { Grid, Paper } from '@mui/material';
+import { Autocomplete, Grid, Paper } from '@mui/material';
 import { useLocation } from 'react-router-dom';
+import SearchBar from '../SearchBar/SearchBar.js';
+import CloverLogo from '../../../styles/Img/Clover_logo.png';
 
 import './ChartPage.css'
 
@@ -10,12 +12,24 @@ function ChartPage() {
   const location = useLocation();
   const Code = location.state.code
   const Name = location.state.name
-  return (
-    <Grid>
-      <Box>
+  const Ex_path = location.state.ex_path
 
+  return (
+    <Box>
+      <Box sx={{ paddingTop: 5, paddingLeft: 10 }} className='TopBox'>
       </Box>
-      <Box sx={{ padding: 10 }} className='Stock'>
+      <Grid container
+        direction='row'
+        sx={{ paddingTop: 5, paddingLeft: 10 }}
+      >
+        <Grid item xs={6}>
+          <img src={CloverLogo} />
+        </Grid>
+        <Grid item xs={4}>
+          <SearchBar />
+        </Grid>
+      </Grid>
+      <Box sx={{ padding: 10, paddingTop: 0 }} className='Stock'>
         <Grid
           container
           direction='row'
@@ -52,10 +66,10 @@ function ChartPage() {
           </Grid>
         </Grid>
         <Paper sx={{ padding: 3, width: 1 / 2, height: '50vh' }}>
-          <DrawChart className='Chart' />
+          <DrawChart data={Ex_path} />
         </Paper>
       </Box >
-    </Grid >
+    </Box >
   )
 }
 

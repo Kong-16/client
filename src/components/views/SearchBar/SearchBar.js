@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import StockItem from '../Data/Stocks.json';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete'
-import { useNavigate } from 'react-router-dom'
-
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function SearchBar() {
     const keys = ['code', 'name']
@@ -12,11 +11,12 @@ function SearchBar() {
     const filteroption = (options, { inputValue }) => {
         return options.filter((item) => keys.some((key) => item[key].startsWith(inputValue)))
     }
-    const navigate = useNavigate()
-
+    const navigate = useNavigate();
+    const location = useLocation();
     useEffect(() => {
         if (obj != null) {
-            navigate("/chart", { state: obj })
+            //if (location.pathname === '/')
+            navigate("/chart", { state: { code: obj.code, name: obj.name, ex_path: location.pathname } });
         }
     }, [obj])
     return (
@@ -27,9 +27,7 @@ function SearchBar() {
             popupIcon={""}
             value={obj}
             onInputChange={(event, inputValue) => setQuery(inputValue)}
-            onChange={(event, newValue) => {
-                setObj(newValue)
-            }}
+            onChange={(event, newValue) => { setObj(newValue) }}
             options={StockItem}
             getOptionLabel={(option) => option.name + '  ' + option.code}
             filterOptions={filteroption}
