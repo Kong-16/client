@@ -25,28 +25,28 @@ function DrawChart(data) {
         Object.assign({}, { "time": key }, lowerCaseInnerKey(value))
     )
     useEffect(() => { // 차트 그림
-//        if (Object.entries(data)[0][1] === '/') {
-            chart.current = createChart(chartContainerRef.current, {
-                layout: {
-                    backgroundColor: '#283237',
-                    textColor: '#cae797', //#f7cd7a  cae797
-                },
-                grid: {
-                    vertLines: {
-                        color: '#334158'
-                    }
-                },
-                crosshair: {
-                    mode: CrosshairMode.Normal, // Magnet으로 할 시 끌려옴
-                },
-                priceScale: {
-                    borderColor: "#485c7b"
-                },
-                timeScale: {
-                    borderColor: '#485c7b'
+        //        if (Object.entries(data)[0][1] === '/') {
+        chart.current = createChart(chartContainerRef.current, {
+            layout: {
+                backgroundColor: '#283237',
+                textColor: '#cae797', //#f7cd7a  cae797
+            },
+            grid: {
+                vertLines: {
+                    color: '#334158'
                 }
-            });
-//        }
+            },
+            crosshair: {
+                mode: CrosshairMode.Normal, // Magnet으로 할 시 끌려옴
+            },
+            priceScale: {
+                borderColor: "#485c7b"
+            },
+            timeScale: {
+                borderColor: '#485c7b'
+            }
+        });
+        //        }
 
         const candleSeries = chart.current.addCandlestickSeries({
             upColor: "#ec6a5e", // rgba 형식으로 쓰면 느림... 왜느린지는 모름
@@ -56,9 +56,9 @@ function DrawChart(data) {
             wickDownColor: "#4a9df8",
             wickUpColor: "#ec6a5e"
         });
-  //      if (Object.entries(data)[0][1] === '/')
-            candleSeries.setData(convertedData)
- //       else candleSeries.update(convertedData) // 혹시 차트 두번그려질까봐 추가했습니다
+        //      if (Object.entries(data)[0][1] === '/')
+        candleSeries.setData(convertedData)
+        //       else candleSeries.update(convertedData) // 혹시 차트 두번그려질까봐 추가했습니다
     }, []);
 
 
