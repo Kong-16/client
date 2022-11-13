@@ -38,9 +38,9 @@ function ChartPage() {
           direction='row'
           justifyContent='space-between'
           alignItems='center'
-          spacing={4}
+          spacing={2}
           sx={{ margin: 0, padding: 2, width: 1 / 2 }} className='StockInfo'>
-          <Grid item xs={8}>
+          <Grid item xs={5}>
             <Paper
               elevation={0}
               sx={{
@@ -54,7 +54,7 @@ function ChartPage() {
               {Name}
             </Paper>
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={7}>
             <Box
               sx={{
                 typography: {
